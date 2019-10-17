@@ -13,11 +13,12 @@ public class SnakeController implements KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) 
+	{
 
-		int key = e.getKeyCode();
+	int key = e.getKeyCode();
 
-		//initial position of the head is on the right side of the body,
+	//initial position of the head is on the right side of the body,
         //moving left from starting position would reverse the direction which is not allowed
         if(key == KeyEvent.VK_LEFT && !(snakeModel.getDirection() == SnakeGameModel.Direction.Right) && !(snakeModel.getDirection() == SnakeGameModel.Direction.None))
         {
