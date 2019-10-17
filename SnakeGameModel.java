@@ -38,9 +38,9 @@ public class SnakeGameModel {
 	private int startPosY;
 
 	private int fruitX;
-    private int fruitY;
+    	private int fruitY;
 
-    private boolean fruitFlag;
+    	private boolean fruitFlag;
 
 	//possible directions for the snake,
 	//"None" denotes the starting direction before user input
@@ -52,8 +52,8 @@ public class SnakeGameModel {
 	//current direction of the snake
 	private Direction dir;
 
-    //List that holds the x,y coordinates of the snake
-    private LinkedList<BodyPos> snakeBody;
+    	//List that holds the x,y coordinates of the snake
+    	private LinkedList<BodyPos> snakeBody;
 
 	public void setDirection(Direction dir)
 	{
@@ -106,62 +106,62 @@ public class SnakeGameModel {
 		BodyPos head = getSnakeBody().getFirst();
 
 		if(getDirection() == SnakeGameModel.Direction.Up)
-        {
-            getSnakeBody().addFirst(new BodyPos(head.getX(), (head.getY() - 26)));
-        }
-
-        if(getDirection() == SnakeGameModel.Direction.Down)
-        {
-        	getSnakeBody().addFirst(new BodyPos(head.getX(), (head.getY() + 26)));
-        }
-
-        if(getDirection() == SnakeGameModel.Direction.Left)
-        {
-        	getSnakeBody().addFirst(new BodyPos((head.getX() - 26), (head.getY())));
-        }
-
-        if(getDirection() == SnakeGameModel.Direction.Right)
-        {
-        	getSnakeBody().addFirst(new BodyPos((head.getX() + 26), (head.getY())));
-        }
-
-        if(!(getDirection() == SnakeGameModel.Direction.None))
-        {
-        	//if the head touched a fruit, don't remove the last bodypart
-        	if(getFruitFlag())
         	{
-        		setFruitFlag(false);
+            		getSnakeBody().addFirst(new BodyPos(head.getX(), (head.getY() - 26)));
         	}
-        	else
+
+        	if(getDirection() == SnakeGameModel.Direction.Down)
         	{
-        		getSnakeBody().removeLast();
+        		getSnakeBody().addFirst(new BodyPos(head.getX(), (head.getY() + 26)));
         	}
-        }
-    }
+
+        	if(getDirection() == SnakeGameModel.Direction.Left)
+        	{
+        		getSnakeBody().addFirst(new BodyPos((head.getX() - 26), (head.getY())));
+        	}
+
+        	if(getDirection() == SnakeGameModel.Direction.Right)
+        	{
+        		getSnakeBody().addFirst(new BodyPos((head.getX() + 26), (head.getY())));
+        	}
+
+        	if(!(getDirection() == SnakeGameModel.Direction.None))
+        	{
+        		//if the head touched a fruit, don't remove the last bodypart
+        		if(getFruitFlag())
+        		{
+        			setFruitFlag(false);
+        		}
+        		else
+        		{
+        			getSnakeBody().removeLast();
+        		}
+        	}
+    	}
 
 	//returns true once the game is over
 	public boolean isGameOver()
 	{
 		BodyPos head = getSnakeBody().getFirst();
 
-    	//game is over when head leaves screen (with wiggle room of 5 pixels)
-        if((head.getX() + SnakeGameModel.SNAKE_SIZE_X > (SnakeGameModel.SCREEN_WIDTH + 5)
-        	|| head.getY() + SnakeGameModel.SNAKE_SIZE_Y > (SnakeGameModel.SCREEN_HEIGHT + 5))
-        	|| head.getX() < -5 || head.getY() < -5)
-        {
-        	return true;
-        }
-
-        //game is over when head touches one of the body parts
-        for(int i = 1; i < getSnakeBody().size(); i++)
-        {
-        	if(head.getX() == getSnakeBody().get(i).getX() && head.getY() == getSnakeBody().get(i).getY())
+    		//game is over when head leaves screen (with wiggle room of 5 pixels)
+        	if((head.getX() + SnakeGameModel.SNAKE_SIZE_X > (SnakeGameModel.SCREEN_WIDTH + 5)
+        		|| head.getY() + SnakeGameModel.SNAKE_SIZE_Y > (SnakeGameModel.SCREEN_HEIGHT + 5))
+        		|| head.getX() < -5 || head.getY() < -5)
         	{
         		return true;
         	}
-        }
 
-        return false;
+        	//game is over when head touches one of the body parts
+        	for(int i = 1; i < getSnakeBody().size(); i++)
+        	{
+        		if(head.getX() == getSnakeBody().get(i).getX() && head.getY() == getSnakeBody().get(i).getY())
+        		{
+        			return true;
+        		}
+        	}
+
+        	return false;
 	}
 
 	public void checkGameLogic()
@@ -169,16 +169,16 @@ public class SnakeGameModel {
 		Rectangle head = new Rectangle(getSnakeBody().getFirst().getX(), getSnakeBody().getFirst().getY(),
 				SnakeGameModel.SNAKE_SIZE_X, SnakeGameModel.SNAKE_SIZE_Y);
 
-    	Rectangle fruit = new Rectangle(getFruitX(), getFruitY(), SnakeGameModel.SNAKE_SIZE_X, SnakeGameModel.SNAKE_SIZE_Y);
+    		Rectangle fruit = new Rectangle(getFruitX(), getFruitY(), SnakeGameModel.SNAKE_SIZE_X, SnakeGameModel.SNAKE_SIZE_Y);
 
-    	//randomize the location of the fruit once the head of the snake touches it
-    	if(head.intersects(fruit))
-    	{
-    	    setFruitX(new Random().nextInt(SnakeGameModel.SCREEN_WIDTH - SnakeGameModel.SNAKE_SIZE_X));
-    	    setFruitY(new Random().nextInt(SnakeGameModel.SCREEN_HEIGHT - SnakeGameModel.SNAKE_SIZE_Y));
+    		//randomize the location of the fruit once the head of the snake touches it
+    		if(head.intersects(fruit))
+    		{
+    	    	setFruitX(new Random().nextInt(SnakeGameModel.SCREEN_WIDTH - SnakeGameModel.SNAKE_SIZE_X));
+    	    	setFruitY(new Random().nextInt(SnakeGameModel.SCREEN_HEIGHT - SnakeGameModel.SNAKE_SIZE_Y));
 
-    	    setFruitFlag(true);
-    	}
+    	    	setFruitFlag(true);
+    		}
 	}
 
 	//Snake always starts with 3 bodyparts,
@@ -194,7 +194,7 @@ public class SnakeGameModel {
 		startPosY = SCREEN_HEIGHT / 2 - SNAKE_SIZE_Y / 2;
 
 		fruitX = new Random().nextInt(SCREEN_WIDTH - SNAKE_SIZE_X);
-	    fruitY = new Random().nextInt(SCREEN_HEIGHT - SNAKE_SIZE_Y);
+	    	fruitY = new Random().nextInt(SCREEN_HEIGHT - SNAKE_SIZE_Y);
 
 		snakeBody = new LinkedList<>();
 
