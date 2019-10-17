@@ -28,7 +28,7 @@ public class SnakeController implements KeyListener {
         	{
         		snakeModel.setDirection(SnakeGameModel.Direction.Right);
         	}
-        else if(key == KeyEvent.VK_UP && !(snakeModel.getDirection() == SnakeGameModel.Direction.Down))
+        	else if(key == KeyEvent.VK_UP && !(snakeModel.getDirection() == SnakeGameModel.Direction.Down))
         	{
         		snakeModel.setDirection(SnakeGameModel.Direction.Up);
         	}
