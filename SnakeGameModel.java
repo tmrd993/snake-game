@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class SnakeGameModel {
 
-	List<SnakeModelView> observers = new LinkedList<SnakeModelView>();
+	private List<SnakeModelView> observers = new LinkedList<SnakeModelView>();
 
 	public void registerObserver(SnakeModelView observer)
 	{
@@ -101,7 +101,7 @@ public class SnakeGameModel {
 	}
 
 	//moves the snake 25 units in the current direction
-	public void move()
+	private void move()
 	{
 		BodyPos head = getSnakeBody().getFirst();
 
@@ -164,7 +164,7 @@ public class SnakeGameModel {
         	return false;
 	}
 
-	public void checkGameLogic()
+	private void checkGameLogic()
 	{
 		Rectangle head = new Rectangle(getSnakeBody().getFirst().getX(), getSnakeBody().getFirst().getY(),
 				SnakeGameModel.SNAKE_SIZE_X, SnakeGameModel.SNAKE_SIZE_Y);
