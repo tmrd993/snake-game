@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class SnakeController implements KeyListener {
 
-	SnakeGameModel snakeModel;
+	private SnakeGameModel snakeModel;
 
 	public SnakeController(SnakeGameModel snakeModel)
 	{
@@ -15,7 +15,6 @@ public class SnakeController implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) 
 	{
-
 		int key = e.getKeyCode();
 
 		//initial position of the head is on the right side of the body,
