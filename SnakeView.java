@@ -7,17 +7,17 @@ import javax.swing.Timer;
 
 public class SnakeView implements SnakeModelView {
 
-	SnakeGameModel snakeModel;
-	JFrame gameFrame;
-	DrawPanel drawPanel;
-	Timer gameLoopTimer;
+	private SnakeGameModel snakeModel;
+	private JFrame gameFrame;
+	private DrawPanel drawPanel;
+	private Timer gameLoopTimer;
 
 	public SnakeView()
 	{
 		init();
 	}
 
-	public void init()
+	private void init()
 	{
 		snakeModel = new SnakeGameModel();
 		snakeModel.registerObserver(this);
