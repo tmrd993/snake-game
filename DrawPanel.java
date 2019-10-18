@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class DrawPanel extends JPanel{
 
-	SnakeGameModel snakeModel;
+	private SnakeGameModel snakeModel;
 
 	private static final long serialVersionUID = -2506407454898288039L;
 
