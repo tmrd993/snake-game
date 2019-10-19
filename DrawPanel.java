@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import javax.swing.JPanel;
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel {
 
 	private SnakeGameModel snakeModel;
 
