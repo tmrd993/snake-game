@@ -174,10 +174,10 @@ public class SnakeGameModel {
     		//randomize the location of the fruit once the head of the snake touches it
     		if(head.intersects(fruit))
     		{
-    	    	setFruitX(new Random().nextInt(SnakeGameModel.SCREEN_WIDTH - SnakeGameModel.SNAKE_SIZE_X));
-    	    	setFruitY(new Random().nextInt(SnakeGameModel.SCREEN_HEIGHT - SnakeGameModel.SNAKE_SIZE_Y));
+    	    		setFruitX(new Random().nextInt(SnakeGameModel.SCREEN_WIDTH - SnakeGameModel.SNAKE_SIZE_X));
+    	    		setFruitY(new Random().nextInt(SnakeGameModel.SCREEN_HEIGHT - SnakeGameModel.SNAKE_SIZE_Y));
 
-    	    	setFruitFlag(true);
+    	    		setFruitFlag(true);
     		}
 	}
 
