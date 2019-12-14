@@ -6,28 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 public class SnakeGameModel {
-
-	private List<SnakeModelView> observers = new LinkedList<SnakeModelView>();
-
-	public void registerObserver(SnakeModelView observer)
-	{
-		observers.add(observer);
-	}
-
-	public void unregisterObserver(SnakeModelView observer)
-	{
-		observers.remove(observer);
-		observer = null;
-	}
-
-	private void notifyObservers()
-	{
-		for(SnakeModelView observer : observers)
-		{
-			observer.update();
-		}
-	}
-
 	public static final int SCREEN_WIDTH = 900;
 	public static final int SCREEN_HEIGHT = 750;
 
@@ -209,5 +187,26 @@ public class SnakeGameModel {
 		move();
 		checkGameLogic();
 		notifyObservers();
+	}
+	
+	private List<SnakeModelView> observers = new LinkedList<SnakeModelView>();
+
+	public void registerObserver(SnakeModelView observer)
+	{
+		observers.add(observer);
+	}
+
+	public void unregisterObserver(SnakeModelView observer)
+	{
+		observers.remove(observer);
+		observer = null;
+	}
+
+	private void notifyObservers()
+	{
+		for(SnakeModelView observer : observers)
+		{
+			observer.update();
+		}
 	}
 }
