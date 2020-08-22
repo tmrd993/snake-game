@@ -7,54 +7,47 @@ import javax.swing.Timer;
 
 public class SnakeView implements SnakeModelView {
 
-	private SnakeGameModel snakeModel;
-	private JFrame gameFrame;
-	private DrawPanel drawPanel;
-	private Timer gameLoopTimer;
+    private SnakeGameModel snakeModel;
+    private JFrame gameFrame;
+    private DrawPanel drawPanel;
+    private Timer gameLoopTimer;
 
-	public SnakeView()
-	{
-		init();
-	}
+    public SnakeView() {
+	init();
+    }
 
-	private void init()
-	{
-		snakeModel = new SnakeGameModel();
-		snakeModel.registerObserver(this);
+    private void init() {
+	snakeModel = new SnakeGameModel();
+	snakeModel.registerObserver((SnakeModelView) this);
 
-		gameFrame = new JFrame("Snake");
-		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	gameFrame = new JFrame("Snake");
+	gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		SnakeController snakeController = new SnakeController(snakeModel);
+	SnakeController snakeController = new SnakeController(snakeModel);
 
-		drawPanel = new DrawPanel(snakeModel);
-		gameFrame.getContentPane().add(drawPanel);
-		gameFrame.addKeyListener(snakeController);
+	drawPanel = new DrawPanel(snakeModel);
+	gameFrame.getContentPane().add(drawPanel);
+	gameFrame.addKeyListener(snakeController);
 
-		gameFrame.pack();
-		gameFrame.setFocusable(true);
-		gameFrame.setVisible(true);
+	gameFrame.pack();
+	gameFrame.setFocusable(true);
+	gameFrame.setVisible(true);
 
-		gameLoopTimer = new Timer(70, new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				if(snakeModel.isGameOver())
-				{
-					gameLoopTimer.stop();
-				}
-				else
-				{
-					snakeModel.step();
-				}
-			}
-		});
+	gameLoopTimer = new Timer(70, new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		if (snakeModel.isGameOver()) {
+		    gameLoopTimer.stop();
+		} else {
+		    snakeModel.step();
+		}
+	    }
+	});
 
-		gameLoopTimer.start();
-	}
+	gameLoopTimer.start();
+    }
 
-	@Override
-	public void update() {
-		drawPanel.repaint();
-	}
+    @Override
+    public void update() {
+	drawPanel.repaint();
+    }
 }

@@ -4,15 +4,14 @@ import javax.swing.SwingUtilities;
 
 public class SnakeApp {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		SwingUtilities.invokeLater(new Runnable()
-		{
-			@Override
-			public void run() {
-				new SnakeView();
-			}
+	SwingUtilities.invokeLater(new Runnable() {
+	    @Override
+	    public void run() {
+		new SnakeView();
+	    }
 
-		});
-	}
+	});
+    }
 }
